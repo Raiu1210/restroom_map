@@ -34,11 +34,11 @@ struct Map: UIViewRepresentable {
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
-//        let coordinate = CLLocationCoordinate2D(
-//            latitude: 34.011286, longitude: -116.166868)
-//        let span = MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
-//        let region = MKCoordinateRegion(center: coordinate, span: span)
-//        view.setRegion(region, animated: true)
+        let coordinate = CLLocationCoordinate2D(
+            latitude: 34.011286, longitude: -116.166868)
+        let span = MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        view.setRegion(region, animated: true)
     }
     
     class Coordinator : NSObject, CLLocationManagerDelegate {
@@ -68,7 +68,8 @@ struct Map: UIViewRepresentable {
                     return
                 }
                 
-                
+                let region = MKCoordinateRegion(center: location!.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+                self.parent.map.region = region
             }
         }
     }
